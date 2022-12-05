@@ -1,0 +1,12 @@
+@media screen and (max-width: 425px) {
+    .header__info_registration {
+        position: absolute;
+        top: 24px;
+        right: -46px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

@@ -1,0 +1,28 @@
+.header__info {
+    position: absolute;
+    right: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+    width: 50%;
+    padding-top: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+@media screen and (max-width:425px) {
+    .header__info {
+        top: -155%;
+        right: 21%;
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: column;
+        gap: 0px;
+       
+    }
+}

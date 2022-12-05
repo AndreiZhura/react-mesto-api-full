@@ -1,0 +1,14 @@
+.header__button {
+    visibility: hidden;
+}
+
+@media screen and (max-width:425px) {
+    .header__button {
+        background-color: black;
+        position: absolute;
+        display: block;
+        right: 6px;
+        top: 38%;
+        visibility: visible;
+    }
+}

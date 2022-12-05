@@ -1,0 +1,9 @@
+.profile__container {
+    position: relative;
+    border-radius: 50%;
+    width: 120px;
+}
+
+.profile__container:hover>.profile__pencil {
+    opacity: 1;
+}

@@ -1,0 +1,12 @@
+.popup__infoTooltip{
+  position: relative;
+  height: 330px;
+  width: 430px;
+}
+
+@media screen and (max-width: 595px) {
+    .popup__infoTooltip {
+        height: 308px;
+        width: 280px;
+    }
+}

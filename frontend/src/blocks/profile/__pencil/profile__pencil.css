@@ -1,0 +1,9 @@
+.profile__pencil {
+    position: absolute;
+    top: 37%;
+    left: 34%;
+    opacity: 0.1;
+    transition: .5s ease;
+    cursor: pointer;
+    
+}

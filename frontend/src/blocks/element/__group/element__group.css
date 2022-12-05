@@ -1,0 +1,17 @@
+.element__group {
+    grid-area: g;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 0px 0px 10px 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@media screen and (max-width:320px) {
+    .element__group {
+        margin-top: 0px;
+    }
+}

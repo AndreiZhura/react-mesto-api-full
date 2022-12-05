@@ -1,0 +1,18 @@
+.section-main__button{
+    width: 358px;
+    height: 50px;
+    margin-top: 218px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21.78px;
+}
+
+@media screen and (max-width:425px) {
+    .section-main__button {
+        width: 260px;
+        height: 46px;
+        margin-top: 172px;
+        line-height: 19.36px;
+       
+    }
+}

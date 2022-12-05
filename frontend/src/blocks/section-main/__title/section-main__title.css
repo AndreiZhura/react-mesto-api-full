@@ -1,0 +1,15 @@
+.section-main__title {
+  text-align: center;
+  margin-top: 0px;
+  font-family: "Inter";
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29.05px;
+}
+
+@media screen and (max-width: 425px) {
+  .section-main__title {
+    font-size: 20px;
+    line-height: 24.2px;
+  }
+}

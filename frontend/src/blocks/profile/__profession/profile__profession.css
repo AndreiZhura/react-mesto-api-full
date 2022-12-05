@@ -1,0 +1,33 @@
+.profile__profession {
+    grid-area: p;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 3px 0px 0px 12px;
+}
+
+@media screen and (max-width:768px) {
+    .profile__profession {
+        margin-left: 65px;
+        max-width: 261px;
+        padding-left: 0px;
+    }
+}
+
+@media screen and (max-width:425px) {
+    .profile__profession {
+        text-align: center;
+        font-size: 14px;
+        line-height: 17px;
+        width: 200px;
+        margin: 16px 28px 0px 0px;
+        padding-left: 15px;
+        padding-top: 2px;
+        justify-self: center;
+    }
+}

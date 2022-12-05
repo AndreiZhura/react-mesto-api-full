@@ -1,0 +1,16 @@
+.section-main__text{
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    align-self: center;
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+@media screen and (max-width: 425px) {
+    .section-main__text {
+      margin-top: 20px;
+    }
+  }
+  
