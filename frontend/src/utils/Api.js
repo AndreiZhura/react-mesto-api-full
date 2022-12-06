@@ -124,6 +124,7 @@ class Api {
 const api = new Api({
     url: 'https://api.andreizhura.nomoredomains.club',
     headers: {
+        Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzhmMzdhNTRlOTQ0MjRmYjNjYWU0ZWYiLCJpYXQiOjE2NzAzNDM5MjAsImV4cCI6MTY3MDk0ODcyMH0._zWq9hBltf0c_qHu7iXU_a746Z8iv82WHUN4dEoRLrQ',
         'Content-Type': 'application/json'
     }
 })
