@@ -122,11 +122,11 @@ class Api {
 }
 
 const api = new Api({
-    url: 'https://api.andreizhura.nomoredomains.club',
+    url: 'https://mesto.nomoreparties.co/v1/cohort-49',
     headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json',
-      }
+        Authorization: 'fca6bc07-6ff2-4cb4-a158-b01d57222ab2',
+        'Content-Type': 'application/json'
+    }
 })
 
 export default api
