@@ -122,7 +122,7 @@ class Api {
 }
 
 const api = new Api({
-    url: 'https://mesto.nomoreparties.co/v1/cohort-49',
+    url: 'https://api.andreizhura.nomoredomains.club',
     headers: {
         Authorization: 'fca6bc07-6ff2-4cb4-a158-b01d57222ab2',
         'Content-Type': 'application/json'

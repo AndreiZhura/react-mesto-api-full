@@ -7,6 +7,7 @@ const userRouters = require('./routers/users');
 const userCardsRouters = require('./routers/card');
 const NotFoundError = require('./errors/NotFoundError');
 const { REGEX } = require('./constants/constants');
+const { giveOneAdress } = require('./middlewares/protected');
 
 const app = express();
 const { PORT = 3000 } = process.env;
@@ -36,6 +37,7 @@ app.post('/signin', celebrate({
   }),
 }), login);
 
+app.use(giveOneAdress);
 // авторизация
 app.use(auth);
 // роуты, которым авторизация нужна
