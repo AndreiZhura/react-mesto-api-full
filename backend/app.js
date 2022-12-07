@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const express = require('express');
-// const { errors } = require('celebrate');
+const { errors } = require('celebrate');
 const { celebrate, Joi } = require('celebrate');
-const cors = require('cors');
 const userRouters = require('./routers/users');
 const userCardsRouters = require('./routers/card');
 const NotFoundError = require('./errors/NotFoundError');
@@ -11,7 +10,6 @@ const { REGEX } = require('./constants/constants');
 
 const app = express();
 const { PORT = 3000 } = process.env;
-const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { createUser, login } = require('./controllers/auth');
 const auth = require('./middlewares/auth');
 
@@ -20,26 +18,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.js
-const options = {
-  origin: [
-    'https://andreizhura.nomoredomains.club',
-    'https://api.andreizhura.nomoredomains.club',
-    'http://andreizhura.nomoredomains.club',
-    'http://api.andreizhura.nomoredomains.club',
-    'https://localhost:3000',
-    'http://localhost:3000',
-  ],
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
-  credentials: true,
-};
-
-app.use(cors(options)); // ПЕРВЫМ!
-
-app.use(requestLogger);
 // роуты, не требующие авторизации,
 // например, регистрация и логин
 app.post('/signup', celebrate({
@@ -51,7 +29,6 @@ app.post('/signup', celebrate({
     avatar: Joi.string().regex(REGEX),
   }),
 }), createUser);
-
 app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
@@ -66,11 +43,9 @@ app.use(auth);
 app.use('/', userRouters);
 app.use('/', userCardsRouters);
 
-app.use(errorLogger);
-
 app.use('*', (req, res, next) => { next(new NotFoundError('Запрашиваемый ресурс не найден')); });
 
-// app.use(errors());
+app.use(errors());
 
 app.use((err, req, res, next) => {
   // если у ошибки нет статуса, выставляем 500
