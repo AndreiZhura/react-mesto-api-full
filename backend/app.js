@@ -3,11 +3,11 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const { errors } = require('celebrate');
 const { celebrate, Joi } = require('celebrate');
+const cors = require('cors');
 const userRouters = require('./routers/users');
 const userCardsRouters = require('./routers/card');
 const NotFoundError = require('./errors/NotFoundError');
 const { REGEX } = require('./constants/constants');
-const { giveOneAdress } = require('./middlewares/protected');
 
 const app = express();
 const { PORT = 3000 } = process.env;
@@ -19,7 +19,25 @@ mongoose.connect('mongodb://localhost:27017/mestodb');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(giveOneAdress);
+// app.js
+
+const options = {
+  origin: [
+    'https://andreizhura.nomoredomains.club',
+    'https://api.andreizhura.nomoredomains.club',
+    'http://andreizhura.nomoredomains.club',
+    'http://api.andreizhura.nomoredomains.club',
+    'https://localhost:3000',
+    'http://localhost:3000',
+  ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+  credentials: true,
+};
+
+app.use('*', cors(options)); // ПЕРВЫМ!
 // роуты, не требующие авторизации,
 // например, регистрация и логин
 app.post('/signup', celebrate({
