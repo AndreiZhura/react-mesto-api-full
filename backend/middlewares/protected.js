@@ -1,6 +1,6 @@
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
-  'https://api.andreizhura.nomoredomains.club',
+  'https://andreizhura.nomoredomains.club',
   'https://api.andreizhura.nomoredomains.club',
   'localhost:3000',
 ];
