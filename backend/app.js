@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const express = require('express');
-const { errors } = require('celebrate');
+// const { errors } = require('celebrate');
 const { celebrate, Joi } = require('celebrate');
 const cors = require('cors');
 const userRouters = require('./routers/users');
@@ -49,7 +49,7 @@ app.use('/', userCardsRouters);
 
 app.use('*', (req, res, next) => { next(new NotFoundError('Запрашиваемый ресурс не найден')); });
 
-app.use(errors());
+// app.use(errors());
 
 app.use((err, req, res, next) => {
   // если у ошибки нет статуса, выставляем 500
