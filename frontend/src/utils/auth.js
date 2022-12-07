@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'api.andreizhura.nomoredomains.club';
 
 function getResponse(res) {
   if(res.ok) {

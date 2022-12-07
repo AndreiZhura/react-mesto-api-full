@@ -1,7 +1,6 @@
 class Api {
     constructor(options) {
         this._url = options.url;
-        this._headers = options.headers;
     }
 
     /*1. Загрузка информации о пользователе с сервера
@@ -10,7 +9,10 @@ class Api {
     downLoadingUserInformationFromServer() {
         return fetch(`${this._url}/users/me`, {
                 method: 'GET',
-                headers: this._headers
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json',
+                  },
             })
             .then(this._getResponseData)
 
@@ -22,7 +24,10 @@ class Api {
     downloadingCardsFromServer() {
             return fetch(`${this._url}/cards`, {
                     method: 'GET',
-                    headers: this._headers
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('token')}`,
+                        'Content-Type': 'application/json',
+                      },
                 })
                 .then(this._getResponseData)
         }
@@ -32,7 +37,10 @@ class Api {
     editingProfile({name, about}) {
         return fetch(`${this._url}/users/me`, {
                 method: 'PATCH',
-                headers: this._headers,
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json',
+                  },
                 body: JSON.stringify({
                     name,
                     about,
@@ -46,7 +54,10 @@ class Api {
     addNewCard({name,link}) {
             return fetch(`${this._url}/cards`, {
                     method: 'POST',
-                    headers: this._headers,
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('token')}`,
+                        'Content-Type': 'application/json',
+                      },
                     body: JSON.stringify({
                         name,
                         link,
@@ -67,7 +78,10 @@ class Api {
     popupDeleteCard(cardId) {
             return fetch(`${this._url}/cards/${cardId}`, {
                     method: 'DELETE',
-                    headers: this._headers,
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('token')}`,
+                        'Content-Type': 'application/json',
+                      },
                 })
                 .then(this._getResponseData)
         }
@@ -76,7 +90,10 @@ class Api {
     puttingLike(id) {
         return fetch(`${this._url}/cards/${id}/likes `, {
                 method: 'PUT',
-                headers: this._headers,
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json',
+                  },
 
             })
             .then(this._getResponseData)
@@ -85,7 +102,10 @@ class Api {
     deleteLike(id) {
         return fetch(`${this._url}/cards/${id}/likes `, {
                 method: 'DELETE',
-                headers: this._headers,
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json',
+                  },
 
             })
             .then(this._getResponseData)
@@ -104,7 +124,10 @@ class Api {
     updateUseravatar(linkAvatar) {
         return fetch(`${this._url}/users/me/avatar`, {
                 method: 'PATCH',
-                headers: this._headers,
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json',
+                  },
                 body: JSON.stringify({
                     avatar: linkAvatar
 
@@ -122,11 +145,7 @@ class Api {
 }
 
 const api = new Api({
-    url: 'https://mesto.nomoreparties.co/v1/cohort-49',
-    headers: {
-        Authorization: 'fca6bc07-6ff2-4cb4-a158-b01d57222ab2',
-        'Content-Type': 'application/json'
-    }
+    url: 'api.andreizhura.nomoredomains.club',
 })
 
 export default api
