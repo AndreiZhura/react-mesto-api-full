@@ -2,6 +2,8 @@
 const allowedCors = [
   'https://andreizhura.nomoredomains.club',
   'https://api.andreizhura.nomoredomains.club',
+  'http://andreizhura.nomoredomains.club',
+  'http://api.andreizhura.nomoredomains.club',
   'localhost:3000',
 ];
 
