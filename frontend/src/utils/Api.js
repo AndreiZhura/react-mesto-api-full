@@ -145,7 +145,7 @@ class Api {
 }
 
 const api = new Api({
-    url: 'api.andreizhura.nomoredomains.club',
+    url: 'https://api.andreizhura.nomoredomains.club',
 })
 
 export default api
