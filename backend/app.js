@@ -11,6 +11,7 @@ const { REGEX } = require('./constants/constants');
 const app = express();
 const { PORT = 3000 } = process.env;
 const { createUser, login } = require('./controllers/auth');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const auth = require('./middlewares/auth');
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
@@ -18,6 +19,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(requestLogger);
 // роуты, не требующие авторизации,
 // например, регистрация и логин
 app.post('/signup', celebrate({
@@ -42,6 +44,8 @@ app.use(auth);
 // card
 app.use('/', userRouters);
 app.use('/', userCardsRouters);
+
+app.use(errorLogger);
 
 app.use('*', (req, res, next) => { next(new NotFoundError('Запрашиваемый ресурс не найден')); });
 
