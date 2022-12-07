@@ -21,23 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.js
 
-const options = {
-  origin: [
-    'https://andreizhura.nomoredomains.club',
-    'https://api.andreizhura.nomoredomains.club',
-    'http://andreizhura.nomoredomains.club',
-    'http://api.andreizhura.nomoredomains.club',
-    'https://localhost:3000',
-    'http://localhost:3000',
-  ],
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
-  credentials: true,
-};
-
-app.use('*', cors(options)); // ПЕРВЫМ!
+app.use(cors()); // ПЕРВЫМ!
 // роуты, не требующие авторизации,
 // например, регистрация и логин
 app.post('/signup', celebrate({
