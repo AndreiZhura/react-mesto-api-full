@@ -33,6 +33,7 @@ app.post('/signup', celebrate({
     avatar: Joi.string().regex(REGEX),
   }),
 }), createUser);
+
 app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
