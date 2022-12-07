@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const { errors } = require('celebrate');
 const { celebrate, Joi } = require('celebrate');
-
+const cors = require('cors');
 const userRouters = require('./routers/users');
 const userCardsRouters = require('./routers/card');
 const NotFoundError = require('./errors/NotFoundError');
@@ -22,6 +22,25 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
+const options = {
+  origin: [
+    'https://andreizhura.nomoredomains.club',
+    'https://api.andreizhura.nomoredomains.club',
+    'http://andreizhura.nomoredomains.club',
+    'http://api.andreizhura.nomoredomains.club',
+    'https://localhost:3000',
+    'http://localhost:3000',
+    'https://localhost:3001',
+    'http://localhost:3001',
+  ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+  credentials: true,
+};
+
+app.use(cors(options));
 // роуты, не требующие авторизации,
 // например, регистрация и логин
 app.post('/signup', celebrate({
