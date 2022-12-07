@@ -10,8 +10,7 @@ class Api {
     downLoadingUserInformationFromServer() {
         return fetch(`${this._url}/users/me`, {
                 method: 'GET',
-                headers: this._headers,
-                credentials: 'include',
+                headers: this._headers
             })
             .then(this._getResponseData)
 
@@ -34,7 +33,6 @@ class Api {
         return fetch(`${this._url}/users/me`, {
                 method: 'PATCH',
                 headers: this._headers,
-                credentials: 'include',
                 body: JSON.stringify({
                     name,
                     about,
@@ -49,7 +47,6 @@ class Api {
             return fetch(`${this._url}/cards`, {
                     method: 'POST',
                     headers: this._headers,
-                    credentials: 'include',
                     body: JSON.stringify({
                         name,
                         link,
@@ -71,7 +68,6 @@ class Api {
             return fetch(`${this._url}/cards/${cardId}`, {
                     method: 'DELETE',
                     headers: this._headers,
-                    credentials: 'include',
                 })
                 .then(this._getResponseData)
         }
@@ -81,7 +77,6 @@ class Api {
         return fetch(`${this._url}/cards/${id}/likes `, {
                 method: 'PUT',
                 headers: this._headers,
-                credentials: 'include',
 
             })
             .then(this._getResponseData)
@@ -91,7 +86,6 @@ class Api {
         return fetch(`${this._url}/cards/${id}/likes `, {
                 method: 'DELETE',
                 headers: this._headers,
-                credentials: 'include',
 
             })
             .then(this._getResponseData)
@@ -111,7 +105,6 @@ class Api {
         return fetch(`${this._url}/users/me/avatar`, {
                 method: 'PATCH',
                 headers: this._headers,
-                credentials: 'include',
                 body: JSON.stringify({
                     avatar: linkAvatar
 
@@ -129,7 +122,7 @@ class Api {
 }
 
 const api = new Api({
-    url: 'https://api.andreizhura.nomoredomains.club',
+    url: 'https://mesto.nomoreparties.co/v1/cohort-49',
     headers: {
         Authorization: 'fca6bc07-6ff2-4cb4-a158-b01d57222ab2',
         'Content-Type': 'application/json'
