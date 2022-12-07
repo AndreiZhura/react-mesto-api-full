@@ -11,6 +11,7 @@ const { REGEX } = require('./constants/constants');
 
 const app = express();
 const { PORT = 3000 } = process.env;
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { createUser, login } = require('./controllers/auth');
 const auth = require('./middlewares/auth');
 
@@ -22,6 +23,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.js
 
 app.use(cors()); // ПЕРВЫМ!
+
+app.use(requestLogger);
 // роуты, не требующие авторизации,
 // например, регистрация и логин
 app.post('/signup', celebrate({
@@ -47,6 +50,8 @@ app.use(auth);
 // card
 app.use('/', userRouters);
 app.use('/', userCardsRouters);
+
+app.use(errorLogger);
 
 app.use('*', (req, res, next) => { next(new NotFoundError('Запрашиваемый ресурс не найден')); });
 
