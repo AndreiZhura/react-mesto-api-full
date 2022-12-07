@@ -7,7 +7,7 @@ const userRouters = require('./routers/users');
 const userCardsRouters = require('./routers/card');
 const NotFoundError = require('./errors/NotFoundError');
 const { REGEX } = require('./constants/constants');
-// const { giveOneAdress } = require('./middlewares/protected');
+const { giveOneAdress } = require('./middlewares/protected');
 
 const app = express();
 const { PORT = 3000 } = process.env;
@@ -19,7 +19,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use('*', giveOneAdress);
+app.use('*', giveOneAdress);
 // роуты, не требующие авторизации,
 // например, регистрация и логин
 app.post('/signup', celebrate({
