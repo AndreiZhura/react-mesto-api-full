@@ -180,9 +180,9 @@ function App() {
     setHeaderIsOpen(true);
   }
 
-  const newAuth = (jwt) => {
+  const newAuth = (token) => {
     return auth
-      .checkToken(jwt)
+      .checkToken(token)
       .then((res) => {
         if (res) {
           setisLoggedIn(true);
@@ -200,9 +200,9 @@ function App() {
   };
 
   useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      newAuth(jwt);
+    const token = localStorage.getItem("token");
+    if (token) {
+      newAuth(token);
     }
   }, []);
 
@@ -220,7 +220,7 @@ function App() {
         setloggedIn(true);
         setUserEmail(email);
         history.push("/");
-        localStorage.setItem("jwt", res.token);
+        localStorage.setItem("token", res.token);
       })
       .catch((err) => {
         console.log(err);
@@ -246,7 +246,7 @@ function App() {
   }
 
   function signOut(){
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('token');
     history.push('/sign-up');
     setisLoggedIn(false)
   }

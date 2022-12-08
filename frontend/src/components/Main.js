@@ -21,7 +21,6 @@ function Main({
 
 
   const currentUser = React.useContext(CurrentUserContext);
-
   return (
     <>
     <main className="main">
@@ -61,21 +60,27 @@ function Main({
           onClick={onAddPlace}
         ></button>
       </section>
-      <div className="elements">
-        {cards.map((card) => (
-          <Card
-            key={card._id}
-            card={card}
-            onCardDelete={onCardDelete}
-            onCardClick={onCardClick}
-            onCardLike={onCardLike}
-          />
-        ))}
-      </div>
+        {!cards.length > 0 ? (
+       <div className="elements"></div>
+        ): (
+          <div className="elements">
+          {cards.map((card) => (
+            <Card
+              key={card._id}
+              card={card}
+              onCardDelete={onCardDelete}
+              onCardClick={onCardClick}
+              onCardLike={onCardLike}
+            />
+          ))}
+        </div>
+          
+        ) }
     </main>
     <Footer/>
     </>
   );
-}
+
+  }
 
 export default Main;
