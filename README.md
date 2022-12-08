@@ -3,6 +3,6 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-* [IP](51.250.54.51)
+  IP:51.250.54.51
 * [Frontend](https://andreizhura.nomoredomains.club)
 * [Backend](https://api.andreizhura.nomoredomains.club)
