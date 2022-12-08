@@ -42,8 +42,8 @@ class Api {
                     'Content-Type': 'application/json',
                   },
                 body: JSON.stringify({
-                    name,
-                    about,
+                    name: name,
+                    about: about
                 })
             })
             .then(this._getResponseData)

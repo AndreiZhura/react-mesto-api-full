@@ -100,6 +100,7 @@ function App() {
     api
       .editingProfile(User)
       .then((result) => {
+        console.log(result)
         setCurrentUser(result);
         closeAllPopups();
       })
