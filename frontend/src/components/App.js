@@ -100,7 +100,7 @@ function App() {
     api
       .editingProfile(User)
       .then((result) => {
-        setCurrentUser(result);
+        setCurrentUser(result.data);
         closeAllPopups();
       })
       .catch((err) => {
@@ -112,7 +112,6 @@ function App() {
     api
       .updateUseravatar(avatar)
       .then((result) => {
-        console.log(result.data);
         setCurrentUser(result.data);
         closeAllPopups();
         document.getElementById("root");
