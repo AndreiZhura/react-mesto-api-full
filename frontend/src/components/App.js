@@ -42,7 +42,7 @@ function App() {
       api
         .downLoadingUserInformationFromServer()
         .then((res) => {
-          setCurrentUser(res);
+          setCurrentUser(res.data);
         })
         .catch((err) => {
           console.error(err);
@@ -51,7 +51,7 @@ function App() {
       api
         .downloadingCardsFromServer()
         .then((result) => {
-          setCards(result);
+          setCards(result.data);
         })
         .catch((err) => {
           console.error(err);
@@ -100,7 +100,6 @@ function App() {
     api
       .editingProfile(User)
       .then((result) => {
-        console.log(result)
         setCurrentUser(result);
         closeAllPopups();
       })
@@ -111,9 +110,10 @@ function App() {
 
   function handleUpdateAvatar(avatar) {
     api
-      .updateUseravatar(avatar.avatar)
+      .updateUseravatar(avatar)
       .then((result) => {
-        setCurrentUser(result);
+        console.log(result.data);
+        setCurrentUser(result.data);
         closeAllPopups();
         document.getElementById("root");
       })

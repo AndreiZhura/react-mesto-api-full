@@ -42,8 +42,8 @@ class Api {
                     'Content-Type': 'application/json',
                   },
                 body: JSON.stringify({
-                    name: name,
-                    about: about
+                    name,
+                    about,
                 })
             })
             .then(this._getResponseData)
@@ -121,7 +121,7 @@ class Api {
 
     /*9. Обновление аватара пользователя
     Чтобы сменить аватар, отправьте такой PATCH-запрос:*/
-    updateUseravatar(linkAvatar) {
+    updateUseravatar({avatar}) {
         return fetch(`${this._url}/users/me/avatar`, {
                 method: 'PATCH',
                 headers: {
@@ -129,7 +129,7 @@ class Api {
                     'Content-Type': 'application/json',
                   },
                 body: JSON.stringify({
-                    avatar: linkAvatar
+                    avatar
 
                 })
 
