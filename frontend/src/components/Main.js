@@ -74,8 +74,7 @@ function Main({
             />
           ))}
         </div>
-          
-        ) }
+        )}
     </main>
     <Footer/>
     </>
